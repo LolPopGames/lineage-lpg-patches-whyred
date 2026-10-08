@@ -1,0 +1,30 @@
+From 2ec1446688ebebca08808e89cd226723b09dda91 Mon Sep 17 00:00:00 2001
+From: LolPopGames <157955292+LolPopGames@users.noreply.github.com>
+Date: Tue, 22 Sep 2026 19:06:44 +0300
+Subject: [PATCH] feat: add OTA support for whyred
+
+Change-Id: Id73a24fb576732a5d8cf39aff031870374b36ba3
+---
+ device.mk | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/device.mk b/device.mk
+index 8f6f12d..b536f6f 100644
+--- a/device.mk
++++ b/device.mk
+@@ -61,5 +61,12 @@ PRODUCT_PACKAGES += \
+ PRODUCT_PACKAGES += \
+     WhyredWifiOverlay
+ 
++# LolPopGames' OTA-updates
++PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
++    lineage.updater.uri=https://lolpopgames.github.io/lineage-ota-whyred/api/v1/{device}_{type}
++
++# LolPopGames' OTA-updates loading keys for recovery
++$(call inherit-product, vendor/lineage-priv/keys/keys.mk)
++
+ # Inherit the proprietary files
+ $(call inherit-product, vendor/xiaomi/whyred/whyred-vendor.mk)
+-- 
+2.56.0
+
