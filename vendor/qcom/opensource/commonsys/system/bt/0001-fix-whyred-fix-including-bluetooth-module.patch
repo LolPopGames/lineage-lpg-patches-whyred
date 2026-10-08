@@ -1,0 +1,25 @@
+From a016674d1d14d68ce012b5006cec9a1812f0e736 Mon Sep 17 00:00:00 2001
+From: LolPopGames <157955292+LolPopGames@users.noreply.github.com>
+Date: Thu, 8 Oct 2026 22:33:23 +0300
+Subject: [PATCH] fix(whyred): fix including bluetooth module
+
+Change-Id: I9adbe5abb760e3ef810a93fade6f8a74f0adc436
+---
+ stack/Android.bp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/stack/Android.bp b/stack/Android.bp
+index 3885904c8..f7f8d01a8 100644
+--- a/stack/Android.bp
++++ b/stack/Android.bp
+@@ -52,6 +52,7 @@ cc_library_static {
+         "vendor/qcom/opensource/commonsys/system/bt/device/include",
+         "system/bt/embdrv/sbc/encoder/include",
+         "system/bt/embdrv/sbc/decoder/include",
++        "system/bt",
+     ],
+     srcs: crypto_toolbox_srcs + [
+         "a2dp/a2dp_aac.cc",
+-- 
+2.56.0
+
