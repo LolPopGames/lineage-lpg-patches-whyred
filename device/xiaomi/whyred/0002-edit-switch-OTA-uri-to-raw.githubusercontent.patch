@@ -1,0 +1,26 @@
+From b27bdae36f4e775c6e1bbae172787383880f6f1e Mon Sep 17 00:00:00 2001
+From: LolPopGames <lolpopgames@noreply.codeberg.org>
+Date: Fri, 9 Oct 2026 17:49:13 +0300
+Subject: [PATCH] edit: switch OTA uri to raw.githubusercontent
+
+Change-Id: I47dfbee9e41e65c65965bb50d99943d980c9482c
+---
+ device.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/device.mk b/device.mk
+index b536f6f..7d1c376 100644
+--- a/device.mk
++++ b/device.mk
+@@ -63,7 +63,7 @@ PRODUCT_PACKAGES += \
+ 
+ # LolPopGames' OTA-updates
+ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+-    lineage.updater.uri=https://lolpopgames.github.io/lineage-ota-whyred/api/v1/{device}_{type}
++    lineage.updater.uri=https://raw.githubusercontent.com/LolPopGames/lineage-ota-whyred/master/v1/{device}_{type}
+ 
+ # LolPopGames' OTA-updates loading keys for recovery
+ $(call inherit-product, vendor/lineage-priv/keys/keys.mk)
+-- 
+2.56.0
+
