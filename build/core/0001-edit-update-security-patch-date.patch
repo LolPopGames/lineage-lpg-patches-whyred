@@ -1,0 +1,26 @@
+From e5f3c0c8dc98e92e3f6066ff4cf4bc9a339baa01 Mon Sep 17 00:00:00 2001
+From: LolPopGames <157955292+LolPopGames@users.noreply.github.com>
+Date: Fri, 9 Oct 2026 16:08:12 +0300
+Subject: [PATCH] edit: update security patch date
+
+Change-Id: I9357897d0af2c00c969043afb3648a07140915df
+---
+ core/version_defaults.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/core/version_defaults.mk b/core/version_defaults.mk
+index a25aea3d1e..ed6626a515 100644
+--- a/core/version_defaults.mk
++++ b/core/version_defaults.mk
+@@ -240,7 +240,7 @@ ifndef PLATFORM_SECURITY_PATCH
+     #  It must be of the form "YYYY-MM-DD" on production devices.
+     #  It must match one of the Android Security Patch Level strings of the Public Security Bulletins.
+     #  If there is no $PLATFORM_SECURITY_PATCH set, keep it empty.
+-      PLATFORM_SECURITY_PATCH := 2024-02-05
++      PLATFORM_SECURITY_PATCH := 2026-10-07
+ endif
+ .KATI_READONLY := PLATFORM_SECURITY_PATCH
+ 
+-- 
+2.56.0
+
