@@ -1,0 +1,26 @@
+From 79dcbf1305d8284b7b28b7451a656c4d8d96ccf0 Mon Sep 17 00:00:00 2001
+From: LolPopGames <lolpopgames@noreply.codeberg.org>
+Date: Wed, 4 Nov 2026 22:21:48 +0200
+Subject: [PATCH] fix(ota): fix link
+
+Change-Id: I321fac0a5e26a2f5369c54de428f77a7e251b0e0
+---
+ device.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/device.mk b/device.mk
+index 7d1c376..95df644 100644
+--- a/device.mk
++++ b/device.mk
+@@ -63,7 +63,7 @@ PRODUCT_PACKAGES += \
+ 
+ # LolPopGames' OTA-updates
+ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+-    lineage.updater.uri=https://raw.githubusercontent.com/LolPopGames/lineage-ota-whyred/master/v1/{device}_{type}
++    lineage.updater.uri=https://raw.githubusercontent.com/LolPopGames/lineage-ota-whyred/refs/heads/master/api/v1/{device}_{type}
+ 
+ # LolPopGames' OTA-updates loading keys for recovery
+ $(call inherit-product, vendor/lineage-priv/keys/keys.mk)
+-- 
+2.56.0
+
