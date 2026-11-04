@@ -1,0 +1,146 @@
+From 70efcdb58f32afd7b977c02b7b124cc9660a3065 Mon Sep 17 00:00:00 2001
+From: LolPopGames <157955292+LolPopGames@users.noreply.github.com>
+Date: Wed, 4 Nov 2026 22:25:55 +0200
+Subject: [PATCH] fix: fix building
+
+Change-Id: Iaea5e6ae95422f9aaf050ea9476070119e9f30d0
+---
+ api/current.txt               | 17 +++++++++++------
+ non-updatable-api/current.txt | 17 +++++++++++------
+ 2 files changed, 22 insertions(+), 12 deletions(-)
+
+diff --git a/api/current.txt b/api/current.txt
+index 952ccdad992c..6a1cf803d2e9 100644
+--- a/api/current.txt
++++ b/api/current.txt
+@@ -23991,6 +23991,7 @@ package android.media {
+     field public static final int USAGE_NOTIFICATION_COMMUNICATION_REQUEST = 7; // 0x7
+     field public static final int USAGE_NOTIFICATION_EVENT = 10; // 0xa
+     field public static final int USAGE_NOTIFICATION_RINGTONE = 6; // 0x6
++    field public static final int USAGE_STITCH = 9528; // 0x2538
+     field public static final int USAGE_UNKNOWN = 0; // 0x0
+     field public static final int USAGE_VOICE_COMMUNICATION = 2; // 0x2
+     field public static final int USAGE_VOICE_COMMUNICATION_SIGNALLING = 3; // 0x3
+@@ -65536,7 +65537,7 @@ package java.lang.reflect {
+ 
+ package java.math {
+ 
+-  public class BigDecimal extends java.lang.Number implements java.lang.Comparable<java.math.BigDecimal> java.io.Serializable {
++  public class BigDecimal extends java.lang.Number implements java.lang.Comparable<java.math.BigDecimal> {
+     ctor public BigDecimal(char[], int, int);
+     ctor public BigDecimal(char[], int, int, java.math.MathContext);
+     ctor public BigDecimal(char[]);
+@@ -65623,19 +65624,20 @@ package java.math {
+     field public static final java.math.BigDecimal ZERO;
+   }
+ 
+-  public class BigInteger extends java.lang.Number implements java.lang.Comparable<java.math.BigInteger> java.io.Serializable {
++  public class BigInteger extends java.lang.Number implements java.lang.Comparable<java.math.BigInteger> {
++    ctor public BigInteger(byte[]);
++    ctor public BigInteger(int, byte[]);
++    ctor public BigInteger(@NonNull String, int);
++    ctor public BigInteger(@NonNull String);
+     ctor public BigInteger(int, @NonNull java.util.Random);
+     ctor public BigInteger(int, int, @NonNull java.util.Random);
+-    ctor public BigInteger(@NonNull String);
+-    ctor public BigInteger(@NonNull String, int);
+-    ctor public BigInteger(int, byte[]);
+-    ctor public BigInteger(byte[]);
+     method @NonNull public java.math.BigInteger abs();
+     method @NonNull public java.math.BigInteger add(@NonNull java.math.BigInteger);
+     method @NonNull public java.math.BigInteger and(@NonNull java.math.BigInteger);
+     method @NonNull public java.math.BigInteger andNot(@NonNull java.math.BigInteger);
+     method public int bitCount();
+     method public int bitLength();
++    method public byte byteValueExact();
+     method @NonNull public java.math.BigInteger clearBit(int);
+     method public int compareTo(@NonNull java.math.BigInteger);
+     method @NonNull public java.math.BigInteger divide(@NonNull java.math.BigInteger);
+@@ -65646,8 +65648,10 @@ package java.math {
+     method @NonNull public java.math.BigInteger gcd(@NonNull java.math.BigInteger);
+     method public int getLowestSetBit();
+     method public int intValue();
++    method public int intValueExact();
+     method public boolean isProbablePrime(int);
+     method public long longValue();
++    method public long longValueExact();
+     method @NonNull public java.math.BigInteger max(@NonNull java.math.BigInteger);
+     method @NonNull public java.math.BigInteger min(@NonNull java.math.BigInteger);
+     method @NonNull public java.math.BigInteger mod(@NonNull java.math.BigInteger);
+@@ -65664,6 +65668,7 @@ package java.math {
+     method @NonNull public java.math.BigInteger setBit(int);
+     method @NonNull public java.math.BigInteger shiftLeft(int);
+     method @NonNull public java.math.BigInteger shiftRight(int);
++    method public short shortValueExact();
+     method public int signum();
+     method @NonNull public java.math.BigInteger subtract(@NonNull java.math.BigInteger);
+     method public boolean testBit(int);
+diff --git a/non-updatable-api/current.txt b/non-updatable-api/current.txt
+index 5f15216e8400..d0ae3b68ea76 100644
+--- a/non-updatable-api/current.txt
++++ b/non-updatable-api/current.txt
+@@ -23991,6 +23991,7 @@ package android.media {
+     field public static final int USAGE_NOTIFICATION_COMMUNICATION_REQUEST = 7; // 0x7
+     field public static final int USAGE_NOTIFICATION_EVENT = 10; // 0xa
+     field public static final int USAGE_NOTIFICATION_RINGTONE = 6; // 0x6
++    field public static final int USAGE_STITCH = 9528; // 0x2538
+     field public static final int USAGE_UNKNOWN = 0; // 0x0
+     field public static final int USAGE_VOICE_COMMUNICATION = 2; // 0x2
+     field public static final int USAGE_VOICE_COMMUNICATION_SIGNALLING = 3; // 0x3
+@@ -63697,7 +63698,7 @@ package java.lang.reflect {
+ 
+ package java.math {
+ 
+-  public class BigDecimal extends java.lang.Number implements java.lang.Comparable<java.math.BigDecimal> java.io.Serializable {
++  public class BigDecimal extends java.lang.Number implements java.lang.Comparable<java.math.BigDecimal> {
+     ctor public BigDecimal(char[], int, int);
+     ctor public BigDecimal(char[], int, int, java.math.MathContext);
+     ctor public BigDecimal(char[]);
+@@ -63784,19 +63785,20 @@ package java.math {
+     field public static final java.math.BigDecimal ZERO;
+   }
+ 
+-  public class BigInteger extends java.lang.Number implements java.lang.Comparable<java.math.BigInteger> java.io.Serializable {
++  public class BigInteger extends java.lang.Number implements java.lang.Comparable<java.math.BigInteger> {
++    ctor public BigInteger(byte[]);
++    ctor public BigInteger(int, byte[]);
++    ctor public BigInteger(@NonNull String, int);
++    ctor public BigInteger(@NonNull String);
+     ctor public BigInteger(int, @NonNull java.util.Random);
+     ctor public BigInteger(int, int, @NonNull java.util.Random);
+-    ctor public BigInteger(@NonNull String);
+-    ctor public BigInteger(@NonNull String, int);
+-    ctor public BigInteger(int, byte[]);
+-    ctor public BigInteger(byte[]);
+     method @NonNull public java.math.BigInteger abs();
+     method @NonNull public java.math.BigInteger add(@NonNull java.math.BigInteger);
+     method @NonNull public java.math.BigInteger and(@NonNull java.math.BigInteger);
+     method @NonNull public java.math.BigInteger andNot(@NonNull java.math.BigInteger);
+     method public int bitCount();
+     method public int bitLength();
++    method public byte byteValueExact();
+     method @NonNull public java.math.BigInteger clearBit(int);
+     method public int compareTo(@NonNull java.math.BigInteger);
+     method @NonNull public java.math.BigInteger divide(@NonNull java.math.BigInteger);
+@@ -63807,8 +63809,10 @@ package java.math {
+     method @NonNull public java.math.BigInteger gcd(@NonNull java.math.BigInteger);
+     method public int getLowestSetBit();
+     method public int intValue();
++    method public int intValueExact();
+     method public boolean isProbablePrime(int);
+     method public long longValue();
++    method public long longValueExact();
+     method @NonNull public java.math.BigInteger max(@NonNull java.math.BigInteger);
+     method @NonNull public java.math.BigInteger min(@NonNull java.math.BigInteger);
+     method @NonNull public java.math.BigInteger mod(@NonNull java.math.BigInteger);
+@@ -63825,6 +63829,7 @@ package java.math {
+     method @NonNull public java.math.BigInteger setBit(int);
+     method @NonNull public java.math.BigInteger shiftLeft(int);
+     method @NonNull public java.math.BigInteger shiftRight(int);
++    method public short shortValueExact();
+     method public int signum();
+     method @NonNull public java.math.BigInteger subtract(@NonNull java.math.BigInteger);
+     method public boolean testBit(int);
+-- 
+2.56.0
+
